@@ -1,0 +1,29 @@
+.paginado{
+    display: flex;
+    position: absolute;
+    margin-top: 235px;
+    margin-left: 140px;
+}
+
+.pagination {
+    display: inline-block;
+  }
+  
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    cursor: pointer;
+  }
+
+  .pagination a.active {
+    background-color: #4CAF50;
+    color: indigo;
+  }
+  
+  .pagination a:hover:not(.active) {
+    background-color: indigo;
+    color: whitesmoke;
+}

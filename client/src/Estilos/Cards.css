@@ -1,0 +1,78 @@
+.paises{
+    display: grid;
+    grid-template-columns: repeat(5, 150px);
+    grid-template-rows: 250px;
+    grid-gap: 9rem;
+    margin-top: 300px;
+    margin-left: 20px;
+    width: 200px;
+    height: 620px;
+}
+
+.individual{
+   padding: 1%;
+}
+
+.title{
+    float: left;
+    margin-left: 530px;
+    margin-top: 40px;
+    color: indigo;
+    transform: translateY(-15px);
+    box-shadow: 0 12px 16px 10px rgba(0, 0, 0, 0.2);
+    font-weight: 900;
+    font-size: 1.5rem;
+    line-height: 1;
+    width: 400px;
+    text-align: center;
+}
+
+.fondo{
+    display: flex;
+    flex-direction: column;
+    background-image: url("../images/e45f54e2cc5516e2210c34453db5ab6e.jpg");
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 1100px
+};
+
+.estiloformulario{
+    --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);       
+    padding-top: 0px;
+    padding-bottom: 0px/* 40px */;
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.estilodiv{
+    width: 30%;
+    margin-bottom: 1.20rem;
+    margin-left: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    float: left;
+}
+
+.estilolabel{
+    text-transform: uppercase;
+    --tw-text-opacity: 1;
+    color: rgb(75 85 99 / var(--tw-text-opacity));
+    font-size: 1.10rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+}
+
+.estiloinput{
+    border-width: 1px;
+    width: 80%;
+    padding: 0.45rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+    border-radius: 0.55rem;
+}
+
+
