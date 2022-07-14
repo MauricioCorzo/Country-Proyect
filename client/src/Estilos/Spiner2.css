@@ -1,0 +1,35 @@
+.spinner2{
+   margin-top: 200px;
+  }
+  
+  .loader2 {
+    font-size: 68px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    display: inline-block;
+    color: black;
+    letter-spacing: 2px;
+    position: relative;
+    box-sizing: border-box;
+  }
+  .loader2::after {
+    content: 'Loading';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #FFF;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    animation: animloader 2s linear infinite;
+  }
+  
+  @keyframes animloader {
+    0% {
+      height: 100%;
+    }
+    100% {
+      height: 0%;
+    }
+  }

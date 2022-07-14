@@ -1,9 +1,8 @@
 
-
-
 export const GET_ALL_COUNTRYS = "GET_ALL_COUNTRYS"
 export const GET_COUNTRY = "GET_COUNTRY"
 export const POST_ACTIVIDAD = "POST_ACTIVIDAD"
+export const DELETE_ACTIVDAD = "DELETE_ACTIVIDAD"
 
 
 
@@ -45,3 +44,15 @@ export const createActivity = (value) => dispatch => {
     .catch(error => console.log(error))
 }
 
+export const deleteActivity = (id) => dispatch => {
+    return fetch(`http://localhost:3001/actividad/${id}` , {
+        method:'DELETE',
+        // body: JSON.stringify(id),
+        // headers: {
+        //     'Content-Type':'application/json',
+        // },
+})
+    .then(response => response.json())
+    .then(data => dispatch({type: DELETE_ACTIVDAD, payload: id}))
+    .catch(error => console.log(error))
+}

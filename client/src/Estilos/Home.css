@@ -1,9 +1,9 @@
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;  
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;  
+}
 
 .home{
     background-image: url("../images/R-removebg-preview.png"), url("../images/e45f54e2cc5516e2210c34453db5ab6e.jpg");

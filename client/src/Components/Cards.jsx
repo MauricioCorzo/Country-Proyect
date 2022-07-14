@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useSelector, useDispatch} from 'react-redux'
+import { Link } from 'react-router-dom'
 import Pais from './Pais'
 import Paginacion from './Paginacion'
 import { getAllCountrys } from '../redux/actions'
@@ -83,7 +84,7 @@ export const Cards = () => {
             return antartida.slice(primerPais,ultimoPais)
         }
         const paisesnormales = paises.slice(primerPais,ultimoPais)
-                return paisesnormales  
+        return paisesnormales  
     }
 }
     
@@ -128,6 +129,11 @@ export const Cards = () => {
             </div>
             <div className='title'>     
                 <h1>Paises del Mundo</h1>
+            </div>
+            <div>
+                <Link exact to ="/crearActividad"> 
+                    <button className='botonCrearActividad'>Crear Actividad</button>
+                </Link>
             </div>
             <div >  
             <Paginacion paisesXPagina={paisesXPagina} paisesTotales={paises.length} paginar={paginar}/>

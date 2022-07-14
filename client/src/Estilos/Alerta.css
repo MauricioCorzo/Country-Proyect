@@ -1,7 +1,9 @@
 .posicion{
-    position: fixed;
-    margin-left: 351px;
-    margin-top: 100px;
+    position: absolute;
+    margin-left: 631px;
+    margin-top: 400px;
+    text-align: center;
+    width: 15%;
     
 }
 
@@ -22,13 +24,13 @@
 
 .alerta{
     background-image: linear-gradient(to right, var(--tw-gradient-stops));
-    width: 150%;
+    width: 155%;
     text-align: center;
     border-radius: 0.75rem/* 12px */;
     text-transform: uppercase;
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity));
     font-weight: 700;
-    font-size: 0.75rem/* 14px */;
+    font-size: 1.5rem/* 14px */;
     line-height: 2.25rem/* 20px */;
 }

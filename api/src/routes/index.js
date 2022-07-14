@@ -1,5 +1,5 @@
 const express = require('express');
-const {pais, countries, actividad} = require ('../routes/Funciones.js')
+const {pais, countries, actividad, borrarActividad} = require ('../routes/Funciones.js')
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -14,6 +14,8 @@ router.get("/countries" , countries)
 router.get("/countries/:idpais", pais)
 
 router.post("/actividad" , actividad)
+
+router.delete("/actividad/:id", borrarActividad)
 
 
 

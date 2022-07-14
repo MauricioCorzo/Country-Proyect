@@ -8,5 +8,4 @@ const Spiner = () => {
     </div>
   )
 }
-
 export default Spiner

@@ -1,10 +1,10 @@
 
-import { GET_ALL_COUNTRYS , GET_COUNTRY, POST_ACTIVIDAD} from "../actions";
+import { GET_ALL_COUNTRYS , GET_COUNTRY, POST_ACTIVIDAD, DELETE_ACTIVDAD} from "../actions";
 
 let initialState = {
     paises: [],
     pais: [],
-    actividades: []
+    actividades: [],
 }
 
 
@@ -17,15 +17,24 @@ const rootReducer = (state = initialState, action) => {
                 pais: []
             }
             case GET_COUNTRY:
+                let paisSinActividad = [...action.payload]  
+                let listaActividades = paisSinActividad[0].activities
+                 paisSinActividad[0].activities = []          
                 return {
                     ...state,
-                    pais: action.payload
+                    pais: paisSinActividad,
+                    actividades: listaActividades
                 }
                 case POST_ACTIVIDAD:
                     return {
                         ...state,
-                        actividades: action.payload
-                    }   
+                        actividades: [...state.actividades ,{...action.payload}]
+                    }
+                    case DELETE_ACTIVDAD:
+                        return {
+                            ...state,           
+                            actividades: state.actividades.filter(a => a.id !== action.payload)
+                        }
             default:
                 return {...state}
     }

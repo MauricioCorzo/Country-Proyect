@@ -100,7 +100,7 @@ const actividad = async (req,res) => {
         } 
        })
         await newactivity.addCountries(countrys)
-        res.send("Listo")
+        res.json(newactivity)
        
     } catch (error) {
         return res.send({msg: error.message})
@@ -108,7 +108,19 @@ const actividad = async (req,res) => {
 }
 
 
-
+const borrarActividad = async (req,res) => {
+    let {id} = req.params
+    try{
+        const actividadBorrada = await Activity.destroy({
+            where:{
+                id:id
+            }
+        })
+        res.json(actividadBorrada)
+    } catch(error){
+        return res.send({msg: error.message})
+}
+}
 
 
 
@@ -119,5 +131,6 @@ const actividad = async (req,res) => {
 module.exports = {
     pais,
     countries,
-    actividad
+    actividad,
+    borrarActividad
 }

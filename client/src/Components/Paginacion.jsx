@@ -8,22 +8,27 @@ const Paginacion = ({paisesXPagina, paisesTotales, paginar}) => {
   for(let i = 1; i <= Math.ceil(paisesTotales / paisesXPagina); i++){
     numeroDePaginas.push(i)
   }
-
-
-  
-  return (
-    <div className='paginado'>
-      
+ 
+    const activo = document.getElementsByTagName("a")
+    console.log(activo)
+    for(let a of activo){
+    a.addEventListener("click", () => {
+      let current = document.getElementsByClassName("active")
+      if(current.length > 0){
+        current[0].className = ""
+      }
+      a.classList.add("active")
+    })
+  }
+    
+  return (      
+    <div className='paginado'>     
       <div className="pagination">
-        
-            {numeroDePaginas.map(num => (
-            <a key={num} onClick={()=> paginar(num)}>{num}</a>
-            ))}
-            
-      </div>
-       
-    </div>
-      
+        {numeroDePaginas.map(num => (
+          <a key={num} onClick={()=> paginar(num)}>{num}</a>
+        ))}
+      </div>    
+    </div>               
   )
 }
 

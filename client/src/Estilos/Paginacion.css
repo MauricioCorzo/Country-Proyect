@@ -2,7 +2,7 @@
     display: flex;
     position: absolute;
     margin-top: 235px;
-    margin-left: 140px;
+    margin-left: 50px;
 }
 
 .pagination {
@@ -12,18 +12,23 @@
   .pagination a {
     color: black;
     float: left;
-    padding: 8px 16px;
-    text-decoration: none;
+    padding: 8px 15px;
     transition: background-color .3s;
     cursor: pointer;
+    font-size: x-large;
+    border-style: outset;
+    background-color: whitesmoke;
   }
 
   .pagination a.active {
-    background-color: #4CAF50;
-    color: indigo;
+    background-color: indigo;
+    color: white;
+    transform: translateY(-10px);
   }
   
   .pagination a:hover:not(.active) {
     background-color: indigo;
     color: whitesmoke;
+    transform: translateY(-10px);
+    transition: .4s;
 }
