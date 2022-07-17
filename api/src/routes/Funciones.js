@@ -6,40 +6,45 @@ const {Country, Activity, Op} = require('../db')
 const countries = async (req,res) => {
     let {name} = req.query 
     if(name){
-        let validacion = await Country.findAll({
-            where: {
-                nombre: {
-                    [Op.iLike]: `${name}%`
+        try {
+            let validacion = await Country.findAll({
+                where: {
+                    nombre: {
+                        [Op.iLike]: `${name}%`
+                    }
                 }
-            }
-        })
-        if(validacion.length == 0){
-            const r = await axios.get("https://restcountries.com/v3/all")
-            const resp = r.data
-            let paises = resp.map(p => {
-                return {
-                 id : p.cioc? p.cioc : p.cca3,
-                nombre: p.name.common,
-                bandera: p.flags[1],
-                continente: p.region,
-                capital: p.capital? p.capital[0] : "No Existe",
-                subregion: p.subregion,
-                area: p.area,
-                poblacion: p.population
-            }
-        })
-        await Country.bulkCreate(paises)
-        let matches = await Country.findAll({
-            where: {
-                nombre: {
-                    [Op.iLike]: `${name}%`
+            })
+            if(validacion.length == 0){
+                const r = await axios.get("https://restcountries.com/v3/all")
+                const resp = r.data
+                let paises = resp.map(p => {
+                    return {
+                    id : p.cioc? p.cioc : p.cca3,
+                    nombre: p.name.common,
+                    bandera: p.flags[1],
+                    continente: p.region,
+                    capital: p.capital? p.capital[0] : "No Existe",
+                    subregion: p.subregion,
+                    area: p.area,
+                    poblacion: p.population
                 }
-            }     
-        })
-          return res.json(matches)
+            })
+            await Country.bulkCreate(paises)
+            let matches = await Country.findAll({
+                where: {
+                    nombre: {
+                        [Op.iLike]: `${name}%`
+                    }
+                }     
+            })
+              return res.json(matches)
+            }
+            return res.json(validacion)     
+        } catch (error) {
+            return res.status(404).json({msg: error.message})
         }
-        return res.json(validacion)     
     } else {
+       try {
         let validacion = await Country.findAll()
         if(validacion.length == 0){
         const r = await axios.get("https://restcountries.com/v3/all")
@@ -59,9 +64,12 @@ const countries = async (req,res) => {
         await Country.bulkCreate(paises)
         return res.json(paises)
     }
-     res.json(validacion)
+    return res.json(validacion)
+    
+       } catch (error) {
+        return res.status(404).json({msg: error.message})
+       }
     }
-
 }       
         
  
@@ -103,7 +111,7 @@ const actividad = async (req,res) => {
         res.json(newactivity)
        
     } catch (error) {
-        return res.send({msg: error.message})
+        return res.status(404).json({msg: error.message})
     }
 }
 

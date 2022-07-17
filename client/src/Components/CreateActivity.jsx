@@ -33,34 +33,59 @@ const CrearActivity = () => {
 
     if([nombre,dificultad,duracion,paises].includes("")){
       setAlerta({msg: "Hay Campos Vacios", error : true})
+      setTimeout(() => {
+        setAlerta({})
+      },3000)
       return
     }
     if(dificultad < 0 || dificultad > 5){
       setAlerta({msg:"La difultad tinen que ser entre 1 y 5", error: true})
+      setTimeout(() => {
+        setAlerta({})
+      },3000)
       return
     }
     
     if(/\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\;|\:/.test(nombre)){
       setAlerta({msg: "Actividad invalida. No se aceptan caracteres especiales", error: true})
+      setTimeout(() => {
+        setAlerta({})
+      },3000)
+      return
+    }
+
+    if(temporada.toUpperCase() !== "PRIMAVERA" && temporada.toUpperCase() !== "VERANO" && temporada.toUpperCase() !== "OTOÑO" && temporada.toUpperCase() != "INVIERNO"){
+      setAlerta({msg:"Solo: Verano, Primavera, Otoño o Invierno" , error: true})
+      setTimeout(() => {
+        setAlerta({})
+      },3000)
       return
     }
 
   
-    
     setAlerta({})
+    
 
 
     let obj = {
       nombre: nombre,
       dificultad: dificultad,
       duracion: duracion,
-      temporada: temporada,
+      temporada: temporada.charAt(0).toUpperCase() + temporada.slice(1).toLocaleLowerCase(),
       paises: paises.split(",").map(p => p.trim())
     }
 
   try {
   dispatch(createActivity(obj))
   setAlerta({msg: "Creado Correctamente", error: false})
+  setTimeout(() => {
+    setAlerta({})
+  },3000)
+  setNombre("")
+  setDificultad("")
+  setDuracion("")
+  setTemporada("")
+  setPaises("")
 } catch (error) {
   console.log(error)
 }
