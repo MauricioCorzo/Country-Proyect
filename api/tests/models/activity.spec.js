@@ -20,7 +20,7 @@ describe('ACTIVITY MODEL TEST', () => {
     });
     expect(activity.toJSON()).toHaveProperty('nombre','Bailar');
     expect(activity.toJSON()).toHaveProperty('dificultad', 3);
-    expect(activity.toJSON()).toHaveProperty('duracion', "2 horas");
+    expect(activity.toJSON()).toHaveProperty('duracion', "2 hora/s");
     expect(activity.toJSON()).toHaveProperty('temporada', "Primavera");
   });
   

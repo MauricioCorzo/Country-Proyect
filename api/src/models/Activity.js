@@ -19,7 +19,7 @@ module.exports = sequelize => {
         duracion: {
             type: DataTypes.INTEGER,
             get(){
-                return `Hora/s: ${this.getDataValue("duracion")}`
+                return `${this.getDataValue("duracion")} hora/s`
             }
         },
         temporada: {
