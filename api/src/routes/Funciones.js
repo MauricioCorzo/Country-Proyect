@@ -107,8 +107,8 @@ const actividad = async (req,res) => {
             }
         }
        })
-         await newactivity.addCountries(countrys)
-        res.json(newactivity)
+        const fusion = await newactivity.addCountries(countrys)
+        res.json({actividad:newactivity, fusion: fusion.map(f => f.countryId)})
        
     } catch (error) {
         return res.status(404).json({msg: error.message})

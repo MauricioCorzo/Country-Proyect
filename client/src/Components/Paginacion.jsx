@@ -24,7 +24,7 @@ const Paginacion = ({paisesXPagina, paisesTotales, paginar}) => {
   return (      
     <div className='paginado'>     
       <div className="pagination">
-        {numeroDePaginas.map(num => (
+        {numeroDePaginas.map(num => ( 
           <a key={num} className={num == 1? "active": ""} onClick={()=> paginar(num)}>{num}</a>
         ))}
       </div>    

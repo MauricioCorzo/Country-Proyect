@@ -18,7 +18,7 @@ export const Cards = () => {
     
     const dispatch = useDispatch()
     const paises = useSelector(state => state.paises)
-    const actividades = useSelector(state => state.actividades)
+    const actividades = useSelector(state => state.actividadesGenerales)
 
     React.useEffect(()=>{
         dispatch(getAllCountrys())
@@ -44,7 +44,8 @@ export const Cards = () => {
         if(buscador){
             const resultado = paises.filter(p =>  p.nombre.slice(0, buscador.length).toLowerCase() === buscador.toLowerCase().trim())
             return resultado.slice(primerPais,ultimoPais)
-        } else {          
+        } 
+        if(filtro.filtro.length === 1) {          
             if (filtro.filtro === "B"){
                 const a_z = paises.sort((a,b) => a.nombre.localeCompare(b.nombre, 'en') )
                 return a_z.slice(primerPais,ultimoPais)
@@ -88,8 +89,13 @@ export const Cards = () => {
            
                  const paisesnormales = paises.slice(primerPais,ultimoPais)
                  return paisesnormales  
-     }       
-             
+     } 
+             if(filtro.filtro.length > 1){
+                const porActividades = paises.filter(p => filtro.filtro.includes(p.id))
+                return porActividades
+     }
+     const paisesnormales = paises.slice(primerPais,ultimoPais)
+     return paisesnormales  
  }
     
     
@@ -131,6 +137,15 @@ export const Cards = () => {
                         <option value="I">Asia</option>
                         <option value="J">Oceania</option>
                         <option value="K">Antartida</option>
+                        </select> 
+                </div>
+                <div className='estilodiv'> 
+                    <label className='estilolabel'>Actividades</label>
+                        <select name="filtro" onChange={e => ordenar(e)} className="estiloinput">
+                            <option>Selecciona una Actividad</option>
+                           {actividades.length == 0? <option>No hay actividades</option> : actividades?.map(a => (
+                            <option value={a.fusion}>{a.actividad.nombre}</option>
+                           ))} 
                         </select> 
                 </div>
             </div>

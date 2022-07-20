@@ -45,7 +45,7 @@ const CrearActivity = () => {
       },3000)
       return
     }
-    if(countrys.filter(p => p.nombre == paises).length === 0 ){
+    if(countrys.filter(p => paises.includes(p.nombre)).length === 0){
       setAlerta({msg: "Pais no encontrado  (Primera letra en Mayuscula o error ortografico)", error: true})
       setTimeout(() => {
         setAlerta({})

@@ -6,6 +6,7 @@ let initialState = {
     paises: [],
     pais: [],
     actividades: [],
+    actividadesGenerales: []
 }
 
 
@@ -13,6 +14,7 @@ const rootReducer = (state = initialState, action) => {
     switch (action.type){
         case GET_ALL_COUNTRYS:
             return {
+                ...state,
                 paises: action.payload,
                 pais:[],
             }
@@ -28,12 +30,14 @@ const rootReducer = (state = initialState, action) => {
                 case POST_ACTIVIDAD:
                     return {
                         ...state,
-                        actividades: [...state.actividades , {...action.payload}]
+                        actividades: [...state.actividades , {...action.payload}],
+                        actividadesGenerales: [...state.actividadesGenerales, {...action.payload}]
                     }
                     case DELETE_ACTIVDAD:
                         return {
                             ...state,           
-                            actividades: state.actividades.filter(a => a.id !== action.payload)
+                            actividades: state.actividades.filter(a => a.id !== action.payload),
+                            actividadesGenerales: state.actividadesGenerales.filter(a => a.actividad.id !== action.payload)
                         }
             default:
                 return {...state}
