@@ -10,7 +10,6 @@ const Paginacion = ({paisesXPagina, paisesTotales, paginar}) => {
   }
  
     const activo = document.getElementsByTagName("a")
-    console.log(activo)
     for(let a of activo){
     a.addEventListener("click", () => {
       let current = document.getElementsByClassName("active")
@@ -20,12 +19,13 @@ const Paginacion = ({paisesXPagina, paisesTotales, paginar}) => {
       a.classList.add("active")
     })
   }
+
     
   return (      
     <div className='paginado'>     
       <div className="pagination">
         {numeroDePaginas.map(num => (
-          <a key={num} onClick={()=> paginar(num)}>{num}</a>
+          <a key={num} className={num == 1? "active": ""} onClick={()=> paginar(num)}>{num}</a>
         ))}
       </div>    
     </div>               

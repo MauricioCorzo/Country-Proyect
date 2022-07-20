@@ -45,8 +45,8 @@ const countries = async (req,res) => {
         }
     } else {
        try {
-        let validacion = await Country.findAll()
-        if(validacion.length == 0){
+         let validacion = await Country.findAll()
+         if(validacion.length == 0){
         const r = await axios.get("https://restcountries.com/v3/all")
             const resp = r.data
             let paises = resp.map(p => {
@@ -64,9 +64,9 @@ const countries = async (req,res) => {
         await Country.bulkCreate(paises)
         return res.json(paises)
     }
-    return res.json(validacion)
+     return res.json(validacion)
     
-       } catch (error) {
+    }   catch (error) {
         return res.status(404).json({msg: error.message})
        }
     }
@@ -105,9 +105,9 @@ const actividad = async (req,res) => {
             nombre: {
                 [Op.iLike]: {[Op.any]: paises } // como cualquiera de los strings del array que le paso (paises)
             }
-        } 
+        }
        })
-        await newactivity.addCountries(countrys)
+         await newactivity.addCountries(countrys)
         res.json(newactivity)
        
     } catch (error) {

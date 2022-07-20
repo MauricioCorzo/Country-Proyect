@@ -19,7 +19,6 @@ import "../Estilos/Detalle.css"
 
    React.useEffect(() => {
       dispatch(getCountry(nombre))
-
       setCargador(true)
       setTimeout(() => {
         setCargador(false)
@@ -44,7 +43,8 @@ import "../Estilos/Detalle.css"
       <img src={pais[0]?.bandera} className="banderaDetalle"/>
       </div>
       <div className='information'>
-      <h1>{pais[0]?.nombre} ({pais[0]?.id})</h1>
+      <h1>{pais[0]?.nombre}</h1>
+      <h3>({pais[0]?.id})</h3>
         <h2>{pais[0]?.continente} / {pais[0]?.subregion}</h2>
         <h3>Capital: {pais[0]?.capital}</h3>
         <p>Area: {pais[0]?.area / 1000}km2</p>

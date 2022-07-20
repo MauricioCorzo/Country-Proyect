@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import {useDispatch} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import { createActivity } from '../redux/actions'
 import Alerta from './Alerta'
 import Spiner2 from './Spiner2'
@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
 const CrearActivity = () => {
 
  const dispatch = useDispatch()
- 
+ const countrys = useSelector(state => state.paises)
   
  const [nombre, setNombre] = useState("")
  const [dificultad, setDificultad] = useState("")
@@ -45,6 +45,13 @@ const CrearActivity = () => {
       },3000)
       return
     }
+    if(countrys.filter(p => p.nombre == paises).length === 0 ){
+      setAlerta({msg: "Pais no encontrado  (Primera letra en Mayuscula o error ortografico)", error: true})
+      setTimeout(() => {
+        setAlerta({})
+      },3000)
+      return
+    }
     
     if(/\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\;|\:/.test(nombre)){
       setAlerta({msg: "Actividad invalida. No se aceptan caracteres especiales", error: true})
@@ -54,7 +61,7 @@ const CrearActivity = () => {
       return
     }
 
-    if(temporada.toUpperCase() !== "PRIMAVERA" && temporada.toUpperCase() !== "VERANO" && temporada.toUpperCase() !== "OTOÑO" && temporada.toUpperCase() != "INVIERNO"){
+    if(temporada.toUpperCase() !== "PRIMAVERA" && temporada.toUpperCase() !== "VERANO" && temporada.toUpperCase() !== "OTOÑO" && temporada.toUpperCase() != "INVIERNO" && temporada != ""){
       setAlerta({msg:"Solo: Verano, Primavera, Otoño o Invierno" , error: true})
       setTimeout(() => {
         setAlerta({})
@@ -71,7 +78,7 @@ const CrearActivity = () => {
       nombre: nombre,
       dificultad: dificultad,
       duracion: duracion,
-      temporada: temporada.charAt(0).toUpperCase() + temporada.slice(1).toLocaleLowerCase(),
+      temporada: temporada? temporada.charAt(0).toUpperCase() + temporada.slice(1).toLowerCase(): "Verano" ,
       paises: paises.split(",").map(p => p.trim())
     }
 

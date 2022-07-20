@@ -101,4 +101,12 @@
     background-color: rgb(49 46 129 / var(--tw-bg-opacity));
 }
 
+.no-existe{
+    display: flex;
+    width: 100%;
+    align-content: center;
+    text-align: center;
+    margin-left: 650px;
+    margin-top: 150px;
+}
 

@@ -1,4 +1,5 @@
 
+
 import { GET_ALL_COUNTRYS , GET_COUNTRY, POST_ACTIVIDAD, DELETE_ACTIVDAD} from "../actions";
 
 let initialState = {
@@ -12,9 +13,8 @@ const rootReducer = (state = initialState, action) => {
     switch (action.type){
         case GET_ALL_COUNTRYS:
             return {
-                ...state,
                 paises: action.payload,
-                pais: []
+                pais:[],
             }
             case GET_COUNTRY:
                 let paisSinActividad = [...action.payload]  
@@ -28,7 +28,7 @@ const rootReducer = (state = initialState, action) => {
                 case POST_ACTIVIDAD:
                     return {
                         ...state,
-                        actividades: [...state.actividades ,{...action.payload}]
+                        actividades: [...state.actividades , {...action.payload}]
                     }
                     case DELETE_ACTIVDAD:
                         return {
