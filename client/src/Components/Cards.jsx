@@ -12,7 +12,7 @@ export const Cards = () => {
 
     const [buscador , setBuscador] = useState("")
     const [paginaActual, setPaginaActual] = useState(1)
-    const [paisesXPagina] = useState(10)
+    const [paisesXPagina, setPaisesXPagina] = useState(10)
     const [filtro, setFiltro] = useState({filtro:""})
     const [cargador, setCargador] =useState(false)
     
@@ -100,7 +100,15 @@ export const Cards = () => {
     
     
     // Cambiar de pagina
-    const paginar = (num) => setPaginaActual(num);
+    const paginar = (num) => setPaginaActual(num)
+    //     if (num === 1){
+    //     setPaisesXPagina(9)
+    //     setPaginaActual(num)
+    //     } else {
+    //         setPaisesXPagina(10)
+    //         setPaginaActual(num)
+    //     }
+    // }
     
   return (
     <div className='fondo'>

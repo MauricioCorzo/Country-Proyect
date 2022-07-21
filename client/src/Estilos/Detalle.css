@@ -1,17 +1,17 @@
 .fondoDetalle{
     display: flex;
     flex-direction: column;
-    background-image: url("../images/e45f54e2cc5516e2210c34453db5ab6e.jpg");
-    background-size: 3000px;
-    background-position: 100%;
-    background-repeat: repeat-y;
-    height: 1420px;
+    background-image: url("../images/Fondo-Vinilo-Decorativo-Mapa-Mundi.png") ,url("../images/e45f54e2cc5516e2210c34453db5ab6e.jpg");
+    background-size: 1500px,3000px;
+    background-position: 10px 10px,100%;
+    background-repeat: no-repeat ,repeat-y;
+    height:1420px;
 }
 .detalle{
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 90%;
+    width: 94%;
     margin-left: 40px;
     margin-top: 65px;    
 }
@@ -30,7 +30,7 @@
 }
 
 .information{
-    width: 350px;
+    width: 370px;
     height: 250px;
     display: flex;
     flex-direction: column;
@@ -43,6 +43,7 @@
     margin-top: -30%;
     background-color: rgb(3,35,54);
     color: #f3f3f3;
+    text-align: center;
 }
 .information:hover{
     transform: translateY(-15px);
@@ -63,7 +64,7 @@
     height: 209px;
     display: flex;
     flex-direction: column;
-    margin-left: 76%;
+    margin-left: 78%;
     align-items: center;
     box-shadow: 0 5px 10px #000;
     line-height: 35px;
@@ -71,6 +72,7 @@
     margin-top: -37%;
     background-color: rgb(3,35,54);
     color: #f3f3f3;
+    text-align: center;
 }
 
 .borrarDetalle{
