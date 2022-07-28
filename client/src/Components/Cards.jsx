@@ -12,7 +12,7 @@ export const Cards = () => {
 
     const [buscador , setBuscador] = useState("")
     const [paginaActual, setPaginaActual] = useState(1)
-    const [paisesXPagina, setPaisesXPagina] = useState(10)
+    const [paisesXPagina] = useState(10)
     const [filtro, setFiltro] = useState({filtro:""})
     const [cargador, setCargador] =useState(false)
     
@@ -29,12 +29,11 @@ export const Cards = () => {
     },[])
     console.log(paises)
     console.log(actividades)
-   
+
     const ordenar = (e) => {
         e.preventDefault()
         setFiltro({[e.target.name]: e.target.value})
     }
-
 
      // Traer cierta cantidad de Paises    
     const ultimoPais = paginaActual * paisesXPagina
