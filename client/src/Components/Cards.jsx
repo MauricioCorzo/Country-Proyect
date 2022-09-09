@@ -31,11 +31,18 @@ export const Cards = () => {
             setCargador(false)
         },1800)
         filtroDePaises()
-        console.log(datosBusqueda)          
-        console.log(buscador)          
+        paginar(1)
+        const corregirPaginado = () => {
+            let tagsA = document.getElementsByTagName("a") 
+            let current = document.querySelector(".active")
+            if(current?.id !== "1"){
+                current?.classList.remove("active")
+                tagsA[1]?.classList.add("active")
+            }
+        }
+        corregirPaginado()
     },[datosBusqueda])
-    // console.log(paises)
-    // console.log(actividades)
+    
 
     const ordenar = (e) => {
         e.preventDefault()
@@ -46,7 +53,7 @@ export const Cards = () => {
     const ultimoPais = paginaActual * paisesXPagina
     const primerPais = ultimoPais - paisesXPagina
 
-    const paisesnormales = paises.slice(primerPais,ultimoPais)
+    // const paisesnormales = paises.slice(primerPais,ultimoPais)
 
      const filtroDePaises = () => {
         const resultado = filtrarOrdenamiento(paises).filter( filtrarContinente ).filter( filtrarActividades ).filter ( filtrarBuscador )
@@ -156,14 +163,6 @@ export const Cards = () => {
     
     // Cambiar de pagina
     const paginar = (num) => setPaginaActual(num)
-    //     if (num === 1){
-    //     setPaisesXPagina(9)
-    //     setPaginaActual(num)
-    //     } else {
-    //         setPaisesXPagina(10)
-    //         setPaginaActual(num)
-    //     }
-    // }
     
   return (
     <div className='fondo'>
@@ -221,7 +220,7 @@ export const Cards = () => {
                 </Link>
             </div>
             <div >  
-            <Paginacion paisesXPagina={paisesXPagina} paisesTotales={paises.length} paginar={paginar}/>
+            <Paginacion paisesXPagina={paisesXPagina} paisesTotales={paises.length} paginar={paginar} datosBusqueda={datosBusqueda}/>
             </div>
             <div className= "paises"> 
                 {cargador? <Spiner/> : filtroDePaises()?.length == 0? <h1 className='no-existe'>No Existe ese Pais</h1> : filtroDePaises()?.map(pais => (
