@@ -1,7 +1,7 @@
 import React from 'react'
 import '../Estilos/Paginacion.css'
 
-const Paginacion = ({paisesXPagina, paisesTotales, paginar}) => {
+const Paginacion = ({paisesXPagina, paisesTotales, paginar, paginaActual}) => {
 
   let numeroDePaginas = [];
 
@@ -9,23 +9,23 @@ const Paginacion = ({paisesXPagina, paisesTotales, paginar}) => {
     numeroDePaginas.push(i)
   }
  
-    const activo = document.getElementsByTagName("a")
-    for(let a of activo){
-    a.addEventListener("click", () => {
-      let current = document.getElementsByClassName("active")
-      if(current.length > 0){
-        current[0].className = ""
-      }
-      a.classList.add("active")
-    })
-  }
+  //   const activo = document.getElementsByTagName("a")
+  //   for(let a of activo){
+  //   a.addEventListener("click", () => {
+  //     let current = document.getElementsByClassName("active")
+  //     if(current.length > 0){
+  //       current[0].className = ""
+  //     }
+  //     a.classList.add("active")
+  //   })
+  // }
 
     
   return (      
     <div className='paginado'>     
       <div className="pagination">
         {numeroDePaginas.map(num => ( 
-          <a key={num} id={num} className={num == 1? "active": ""} onClick={()=> paginar(num)}>{num}</a>
+          <a key={num} id={num} className={paginaActual == num ? "active": ""} onClick={()=> paginar(num)}>{num}</a>
         ))}
       </div>    
     </div>               

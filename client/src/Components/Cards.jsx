@@ -32,15 +32,15 @@ export const Cards = () => {
         },1800)
         filtroDePaises()
         paginar(1)
-        const corregirPaginado = () => {
-            let tagsA = document.getElementsByTagName("a") 
-            let current = document.querySelector(".active")
-            if(current?.id !== "1"){
-                current?.classList.remove("active")
-                tagsA[1]?.classList.add("active")
-            }
-        }
-        corregirPaginado()
+        // const corregirPaginado = () => {
+        //     let tagsA = document.getElementsByTagName("a") 
+        //     let current = document.querySelector(".active")
+        //     if(current?.id !== "1"){
+        //         current?.classList.remove("active")
+        //         tagsA[1]?.classList.add("active")
+        //     }
+        // }
+        // corregirPaginado()
     },[datosBusqueda])
     
 
@@ -220,7 +220,7 @@ export const Cards = () => {
                 </Link>
             </div>
             <div >  
-            <Paginacion paisesXPagina={paisesXPagina} paisesTotales={paises.length} paginar={paginar} datosBusqueda={datosBusqueda}/>
+            <Paginacion paisesXPagina={paisesXPagina} paisesTotales={paises.length} paginar={paginar} paginaActual={paginaActual}/>
             </div>
             <div className= "paises"> 
                 {cargador? <Spiner/> : filtroDePaises()?.length == 0? <h1 className='no-existe'>No Existe ese Pais</h1> : filtroDePaises()?.map(pais => (
