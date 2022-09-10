@@ -41,7 +41,7 @@ export const Cards = () => {
         //     }
         // }
         // corregirPaginado()
-    },[datosBusqueda])
+    },[datosBusqueda, buscador])
     
 
     const ordenar = (e) => {
